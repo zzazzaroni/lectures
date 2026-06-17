@@ -208,11 +208,12 @@
   .scn2 .do-card .h{font-family:var(--font-mono); font-size:12px; font-weight:700; color:#FFD700; letter-spacing:.06em; margin-bottom:5px}
   .scn2 .do-card p{font-size:15px; line-height:1.5; color:#E6E8EC}
   .scn2 .do-card b{color:#fff}
-  /* scenario final sweep banner — 화면을 가로질러 등장 */
-  .sweep-line{position:absolute; left:0; right:0; bottom:74px; background:var(--alert); color:#fff; display:flex; align-items:center; gap:22px; padding:22px 88px; font-size:52px; font-weight:800; letter-spacing:-.02em; transform:translateX(-110%); opacity:0; transition:transform .6s cubic-bezier(.7,0,.2,1), opacity .2s ease; box-shadow:0 22px 60px rgba(255,67,38,.45); z-index:8}
-  .sweep-line.on{transform:translateX(0); opacity:1}
-  .sweep-line .x{font-size:44px; line-height:1}
-  .sweep-line .mono{margin-left:auto; font-family:var(--font-mono); font-size:17px; font-weight:600; opacity:.92; letter-spacing:0}
+  /* scenario final stamp — 화면 가운데에서 팝업 */
+  .sweep-line{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(.55) rotate(-3deg); opacity:0; background:var(--alert); color:#fff; display:flex; flex-direction:column; align-items:center; gap:10px; padding:34px 70px; border-radius:20px; box-shadow:0 30px 90px rgba(255,67,38,.5); z-index:9; pointer-events:none; transition:transform .5s cubic-bezier(.34,1.56,.64,1), opacity .25s ease}
+  .sweep-line.on{transform:translate(-50%,-50%) scale(1) rotate(-3deg); opacity:1}
+  .sweep-line .big{font-size:72px; font-weight:800; letter-spacing:-.02em; line-height:1; display:flex; align-items:center; gap:20px}
+  .sweep-line .x{font-size:60px; line-height:1}
+  .sweep-line .mono{font-family:var(--font-mono); font-size:18px; font-weight:600; opacity:.95; letter-spacing:.02em}
 
 
   /* quiz */
@@ -832,7 +833,7 @@
       <div class="eyebrow alert">시나리오 D · 용역업체 자료 반출</div>
       <h2 style="margin-top:8px; font-size:30px">사업이 끝났는데, 자료는 어디에?</h2>
       <div class="scn2">
-        <div class="sweep-line" data-step="2"><span class="x">⚠</span><span>미흡 사례</span><span class="mono">자체평가 10904 · 10905</span></div>
+        <div class="sweep-line" data-step="2"><div class="big"><span class="x">⚠</span> 미흡 사례</div><div class="mono">자체평가 10904 · 10905</div></div>
         <div class="sit-box" data-step="0">정보화 용역 사업이 종료됐습니다. 업체 PM이 인사하며 말합니다.<br>"덕분에 잘 마쳤습니다. <b>저희가 작업한 자료는 사내 클라우드에 백업</b>해뒀고, 노트북도 가져갑니다. 혹시 추가 요청 있으시면 언제든 연락주세요!"</div>
         <div class="think" data-step="0"><span class="icon">🤔</span><span><b>잠깐 생각해 보세요</b> — 그냥 보내도 될까요? 화면을 탭하면 답이 보입니다.</span></div>
         <div class="answer-block" data-step="1">
