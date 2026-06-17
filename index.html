@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>강의자료 허브 · 김태열</title>
+<meta name="description" content="개인정보보호·정보보안 강의 자료 모음">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14161A; --ink-soft:#3A3F47; --muted:#6B7280; --line:#E4E7EC;
+    --surface:#F5F7FA; --blue:#2547D0; --alert:#FF4326; --ok:#0EA672;
+    --font-sans:'Pretendard',-apple-system,BlinkMacSystemFont,sans-serif;
+    --font-mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html,body{background:#fff; color:var(--ink); font-family:var(--font-sans); -webkit-font-smoothing:antialiased}
+  body{min-height:100vh; padding:48px 24px 80px}
+  .container{max-width:920px; margin:0 auto}
+
+  /* Header */
+  header{padding:48px 0 56px; border-bottom:1px solid var(--line); margin-bottom:48px}
+  .eyebrow{display:inline-flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:12px; color:var(--blue); letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:18px}
+  .eyebrow::before{content:""; width:24px; height:2px; background:var(--blue)}
+  h1{font-size:48px; line-height:1.15; font-weight:800; letter-spacing:-.02em; margin-bottom:14px}
+  h1 .accent{color:var(--blue)}
+  .subtitle{font-size:18px; color:var(--ink-soft); line-height:1.55; max-width:640px}
+
+  /* Instructor card */
+  .ins{margin-top:36px; display:grid; grid-template-columns:auto 1fr; gap:24px; padding:24px; background:var(--surface); border-radius:16px}
+  .ins .avatar{width:84px; height:84px; border-radius:50%; background:linear-gradient(135deg,var(--blue),#5A78E0); color:#fff; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800}
+  .ins .meta{display:flex; flex-direction:column; gap:8px}
+  .ins .name{font-size:22px; font-weight:800; letter-spacing:-.01em}
+  .ins .name small{font-weight:500; color:var(--muted); margin-left:8px; font-size:14px}
+  .ins .certs{font-family:var(--font-mono); font-size:12px; color:var(--blue); letter-spacing:.05em}
+  .ins .career{font-size:14px; color:var(--ink-soft); line-height:1.6}
+  .ins .career b{color:var(--ink)}
+
+  /* Section */
+  section{margin-bottom:56px}
+  h2{font-size:13px; font-family:var(--font-mono); color:var(--muted); letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:18px}
+
+  /* Lecture cards */
+  .grid{display:grid; gap:14px}
+  .card{display:block; padding:22px 26px; background:#fff; border:1.5px solid var(--line); border-radius:14px; text-decoration:none; color:inherit; transition:all .2s ease; position:relative}
+  .card:hover{border-color:var(--blue); transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,71,208,.08)}
+  .card .tag{display:inline-block; font-family:var(--font-mono); font-size:11px; font-weight:700; padding:3px 9px; border-radius:99px; background:var(--surface); color:var(--ink-soft); letter-spacing:.05em; margin-bottom:10px}
+  .card .tag.live{background:#E8F7EF; color:var(--ok)}
+  .card .tag.preview{background:#FFEDEA; color:var(--alert)}
+  .card .tag.upcoming{background:#EAEEFC; color:var(--blue)}
+  .card h3{font-size:20px; font-weight:800; letter-spacing:-.01em; margin-bottom:6px}
+  .card .desc{font-size:15px; color:var(--ink-soft); line-height:1.5; margin-bottom:10px}
+  .card .meta{font-family:var(--font-mono); font-size:12px; color:var(--muted); display:flex; gap:14px; flex-wrap:wrap}
+  .card .meta span{display:flex; align-items:center; gap:4px}
+  .card .arrow{position:absolute; right:24px; top:50%; transform:translateY(-50%); font-size:20px; color:var(--muted); transition:all .2s}
+  .card:hover .arrow{color:var(--blue); transform:translateY(-50%) translateX(4px)}
+  .card.disabled{pointer-events:none; opacity:.6}
+  .card.disabled .arrow{display:none}
+
+  /* Footer */
+  footer{margin-top:80px; padding-top:32px; border-top:1px solid var(--line); font-family:var(--font-mono); font-size:12px; color:var(--muted); line-height:1.8}
+  footer .row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px}
+
+  /* Notice */
+  .notice{padding:14px 18px; background:#FFF8E5; border:1.5px solid #E5B800; border-radius:12px; font-size:14px; color:#7A5A00; line-height:1.55; margin-bottom:32px}
+  .notice b{color:#5B4400}
+
+  @media (max-width:680px){
+    body{padding:32px 18px 60px}
+    header{padding:24px 0 36px}
+    h1{font-size:34px}
+    .ins{grid-template-columns:1fr; padding:20px}
+    .ins .avatar{width:64px; height:64px; font-size:22px}
+    .card .arrow{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="eyebrow">강의자료 허브</div>
+    <h1>지키는 사람의<br><span class="accent">개인정보·정보보호</span></h1>
+    <p class="subtitle">개인정보보호와 정보보안 강의 자료를 모아둔 페이지입니다. 외부 기관·발주처와 사전에 공유하기 위한 용도이며, 본 발표는 현장에서 진행됩니다.</p>
+
+    <div class="ins">
+      <div class="avatar">김</div>
+      <div class="meta">
+        <div class="name">김태열 <small>(주)스푼랩스 CPO / CISO</small></div>
+        <div class="certs">CPPG · CISA · ITIL · PMP · ISO27001 심사원(보) · 사회복지사</div>
+        <div class="career">
+          <b>전</b> 위메이드플레이 개인정보보호 팀장 · 월드비전 개인정보·정보보호 총괄 · SK커뮤니케이션즈 고객인프라팀장 · SK텔레콤 고객정보운영 총괄<br>
+          <b>전</b> '24·'25년 개인정보 보호수준평가 위원<br>
+          <b>주요 강의</b> 개인정보보호위원회·서울시·방위사업청·과기정통부·한국장애인고용공단·한화시스템·SBSi·SK텔레콤·PisFair 등 100여 회
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="notice">
+    📄 <b>사전 공유본 안내</b> — 본 자료는 발표 전 발주처 검토용입니다. 영상 클립은 발표 당일 현장에서 공개되며, 사전 공유본에서는 제외됩니다. 자료의 무단 배포·복제·인쇄·외부 유출을 금합니다.
+  </div>
+
+  <section>
+    <h2>자료 목록</h2>
+    <div class="grid">
+
+      <a href="./pipc-2026-06/" class="card">
+        <span class="tag preview">사전 공유본</span>
+        <h3>개인정보보호위원회 전직원 정보보호·개인정보 교육</h3>
+        <p class="desc">규제하는 우리가 먼저 모범이 되는 90분. 2026 법 개정·실전 사례 5종·공공기관 안전성 확보조치 핵심.</p>
+        <div class="meta">
+          <span>📅 2026년 6월</span>
+          <span>⏱ 90분</span>
+          <span>👥 전직원 대상</span>
+          <span>🖥 56장</span>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <!-- 추가 자료는 이 아래에 a.card 형태로 계속 추가 -->
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="row">
+      <div>© 2026 김태열 · 강의 자료 사전 공유 페이지</div>
+      <div>문의는 발주 담당자를 통해 주시기 바랍니다</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Light prevention on this page too
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('dragstart', e => e.preventDefault());
+</script>
+
+</body>
+</html>
